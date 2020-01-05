@@ -1,4 +1,4 @@
-Baboon contributors (sorted alphabetically)
+Baboon contributors
 ============================================
 
 * **[Ilan Zuckerman](https://github.com/IlanZuckerman)**
