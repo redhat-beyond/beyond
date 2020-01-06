@@ -12,7 +12,7 @@ Baboon contributors
 
 * **[Kitty Weg](https://github.com/kittyweg)**
 
-  * Adding license file 
+  * Adding license file  
 
 * **[Yaniv Liberman](https://github.com/)**
 
