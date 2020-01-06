@@ -1,4 +1,4 @@
 # baboon
 
-yet another line
+In this repository we learn the functions of git and GitHub
 
