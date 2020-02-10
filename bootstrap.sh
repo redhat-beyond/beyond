@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dnf update
+dnf update -y
