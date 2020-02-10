@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dnf update
+apt-get update -y
