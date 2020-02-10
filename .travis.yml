@@ -1,4 +1,4 @@
 dist: bionic
 
 script:
-- ./bootstrap.sh
+- sudo ./bootstrap.sh
