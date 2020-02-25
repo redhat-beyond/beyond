@@ -1,6 +1,8 @@
 dist: bionic
 
+install:
+  - sudo ./bootstrap.sh
+  - pip3 install flake8
+
 script:
-- sudo ./bootstrap.sh
-- pip3 install flake8
-- flake8  # execute flake8 on current dir recursively
+  - flake8  # execute flake8 on current dir recursively
