@@ -3,7 +3,6 @@
 from flask import Flask
 
 app = Flask(__name__)
-app.run(host= '0.0.0.0')
 
 @app.route('/')
 def index():
@@ -11,4 +10,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host= '0.0.0.0')
