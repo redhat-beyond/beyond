@@ -6,3 +6,4 @@ install:
 
 script:
   - flake8  # execute flake8 on current dir recursively
+  - tests/http_get_test.sh
