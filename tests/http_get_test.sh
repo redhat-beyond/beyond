@@ -1,6 +1,6 @@
 #!/bin/bash
 exp_response='200'
-if [[ $(curl -o /dev/null -s -w "%{http_code}\n" http://localhost:5000) = $exp_response ]]; then
+if [ $(curl -o /dev/null -s -w "%{http_code}\n" http://localhost:5000) = $exp_response ]; then
   exit 0
 else
   exit 1
