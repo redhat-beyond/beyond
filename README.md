@@ -69,3 +69,24 @@ This will create a new virtual environment and activate it for you. To deactivat
 
 To activate your virtual environment again, simply run:\
 `workon name-of-your-virtual-env`
+
+How to use the database
+---------------------------------------
+In order to add new tables to the db, insert the respected SQL commands inside the 'MYSQL SCRIPT' clause in the boostrap script.
+
+In order look at the db, run the machine and use the following commands:
+open mysql with the password root:\
+`mysql -uroot -p`
+
+Use our database:\
+`USE baboon;`
+
+See which tables exist in the db:\
+`SHOW TABLES;`
+
+See the table structure:\
+`DESCRIBE table-name;`
+
+See all the values in the table:\
+`SELECT * FROM table-name;`
+-- INSERT --                      
