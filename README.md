@@ -88,5 +88,4 @@ See the table structure:\
 `DESCRIBE table-name;`
 
 See all the values in the table:\
-`SELECT * FROM table-name;`
--- INSERT --                      
+`SELECT * FROM table-name;`                  
