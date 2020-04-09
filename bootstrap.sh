@@ -14,12 +14,12 @@ USE baboon;
 create table users(username VARCHAR(25) NOT NULL, password VARCHAR(100) NOT NULL, creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, PRIMARY KEY(username));
 MYSQL_SCRIPT
 
-if [ $TRAVIS ]
-then
-   my_path=$TRAVIS_BUILD_DIR
-else
-   my_path='/vagrant'
-fi
+#if [ $TRAVIS ]
+#then
+#   my_path=$TRAVIS_BUILD_DIR
+#else
+#   my_path='/vagrant'
+#fi
 
-pip3 install -r $my_path/requirements.txt
-nohup python3 $my_path/app.py runserver & sleep 1
+pip3 install -r requirements.txt
+nohup python3 app.py runserver & sleep 1
