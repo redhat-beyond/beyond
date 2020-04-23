@@ -8,7 +8,7 @@ debconf-set-selections <<< 'mysql-server mysql-server/root_password_again passwo
 # Installing packages
 apt-get install -y python3-pip mysql-server mysql-client
 # create database
-mysql -u root -p root  <<MYSQL_SCRIPT
+mysql -u root -proot  <<MYSQL_SCRIPT
 CREATE DATABASE baboon;
 USE baboon;
 create table users(username VARCHAR(25) NOT NULL, password VARCHAR(100) NOT NULL, creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, PRIMARY KEY(username));
