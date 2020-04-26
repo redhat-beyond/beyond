@@ -25,7 +25,18 @@ jobs:
     - name: Execute bootstrap.sh
       run: |
         sudo ./bootstrap.sh
-
+   
     - name: Execute tests
       run: |
         sh tests/http_get_test.sh
+
+    - name: Install Dependencies
+      run: |
+        wget https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz
+        mkdir geckodriver
+        tar -xzf geckodriver-v0.26.0-linux64.tar.gz -C geckodriver
+        pip install -r tests/requirements-test.txt
+   
+    - name: Pytest
+      run: |
+        pytest
