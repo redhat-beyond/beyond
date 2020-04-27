@@ -8,6 +8,7 @@ debconf-set-selections <<< 'mysql-server mysql-server/root_password_again passwo
 # Installing packages
 apt-get install -y python3-pip mysql-server mysql-client
 # create database
+systemctl start mysql
 mysql -u root -proot  <<MYSQL_SCRIPT
 CREATE DATABASE baboon;
 USE baboon;
