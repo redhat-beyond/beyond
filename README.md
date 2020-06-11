@@ -3,6 +3,11 @@
 In this repository we learn the functions of git and GitHub
 
 
+Requirements
+-----------------------------
+- Install vagrant 'aws' plugin: `vagrant plugin install vagrant-aws`
+- Install vagrant 'env' plugin: `vagrant plugin install vagrant-env`
+- Copy the .env_template file content to a .env file and insert the required keys.
 
 Some Useful git Commands 
 --------------------

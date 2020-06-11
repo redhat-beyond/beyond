@@ -10,6 +10,9 @@ class Hash
 end
 
 Vagrant.configure("2") do |config|
+  config.vagrant.plugin = ["vagrant-env"]
+  config.env.enable
+
   config.vm.provision "shell", path: "bootstrap.sh"
 
   config.vm.define "dev" do |dev|
