@@ -11,6 +11,7 @@ end
 
 Vagrant.configure("2") do |config|
   config.vagrant.plugins= ["vagrant-env"]
+  config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: [ ".env", ".env_template", ".git/", ".github/", ".gitignore", "CONTRIBUTORS.md", "LICENSE.md", "README.md", "pytest.ini", "tests/", "venv/", ".idea/", "Vagrantfile", "bootstrap-infra.py", "bootstrap.sh" ]
   config.env.enable
 
   config.vm.provision "shell", path: "bootstrap.sh"
