@@ -13,7 +13,7 @@ Some Useful git Commands
 --------------------
 `git remote -v` - Show all the tracked repositories
 
-`git remote add upstream git@github.com:Code-Collaborate-Community/baboon.git` - Adding upstream repo code
+`git remote add upstream git@github.com:beyond-io/baboon.git` - Adding upstream repo code
 
 `git commit -a` - Record changes to the repository
 
