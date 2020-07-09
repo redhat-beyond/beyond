@@ -94,3 +94,18 @@ See the table structure:\
 
 See all the values in the table:\
 `SELECT * FROM table-name;`                  
+
+How to use isort
+---------------------------------------
+isort is a Python utility / library to sort imports alphabetically, and automatically separated into sections and by type.
+
+Install isort package:\
+`pip install isort` 
+
+Create your python file include imports:\
+`vim example.py`
+
+Run isort:\
+`isort example.py`
+
+Done! The imports inside your python file is sorted.
