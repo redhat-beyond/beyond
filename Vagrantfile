@@ -27,10 +27,10 @@ Vagrant.configure("2") do |config|
 
     stage.vm.provider :aws do |aws,override|
       override.nfs.functional = false 
-      aws.keypair_name = "aws_key_pair"
+      aws.keypair_name = ENV['KEY_NAME']
       aws.ami = "ami-0701e7be9b2a77600"
       aws.instance_type = "t2.micro"
-      aws.region = "eu-west-1c"
+      aws.region = ENV['REGION']
       aws.subnet_id = ENV['SUBNET_ID']
       aws.security_groups = ENV['SECURITY_GROUPS']
       aws.associate_public_ip = true
