@@ -11,7 +11,11 @@ end
 
 Vagrant.configure("2") do |config|
   config.vagrant.plugins= ["vagrant-env"]
-  config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: [ ".env", ".env_template", ".git/", ".github/", ".gitignore", "CONTRIBUTORS.md", "LICENSE.md", "README.md", "pytest.ini", "tests/", "venv/", ".idea/", "Vagrantfile", "bootstrap-infra.py", "bootstrap.sh" ]
+  config.vm.synced_folder ".", "/vagrant", type: "rsync", disabled: true
+  config.vm.synced_folder "baboon/", "/vagrant/baboon/", type: "rsync"
+  config.vm.provision "file", source: "requirements.txt", destination: "/tmp/requirements.txt"
+  config.vm.provision "file", source: "app.py", destination: "/tmp/app.py"
+  config.vm.provision "shell", inline: "sudo cp /tmp/{requirements.txt,app.py}  /vagrant/"
   config.env.enable
 
   config.vm.provision "shell", path: "bootstrap.sh"
