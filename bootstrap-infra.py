@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 import os
-import random
-import string
 
 import boto3
 from botocore.exceptions import ClientError
@@ -12,7 +10,6 @@ GROUP_NAME = 'bootstrapped_group'
 
 
 def main():
-
     load_dotenv()
     ec2 = boto3.client('ec2')
     security_groups = os.getenv("SECURITY_GROUPS")

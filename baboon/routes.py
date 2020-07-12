@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
-from flask import render_template, flash, redirect, url_for, send_from_directory
 import os
+
+from flask import render_template, send_from_directory
+
 from baboon import app
 
 
