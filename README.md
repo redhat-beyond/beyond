@@ -11,30 +11,29 @@ Requirements
 
 Some Useful git Commands 
 --------------------
-git remote -v
-      Show all the tracked repositories
+`git remote -v` - Show all the tracked repositories
 
-git remote add upstream git@github.com:Code-Collaborate-Community/baboon.git
-      Adding upstream repo code
+`git remote add upstream git@github.com:beyond-io/baboon.git` - Adding upstream repo code
 
-git commit -a
-      Record changes to the repository
+`git commit -a` - Record changes to the repository
 
-git clone
-      Clone a repository into a new directory
+`git clone` - Clone a repository into a new directory
 
-git push  
-      Update remote refs along with associated objects
+`git push` - Update remote refs along with associated objects
 
 Some Userful Vagrant Commands
 -----------------------------
 
-vagrant init fedora/31-cloud-base
-	Create Vagrant file for Fedora 31 
+`vagrant init fedora/31-cloud-base` - Create Vagrant file for Fedora 31 
 
-vagrant up --provider=virtualbox
-	Build and run the VM base on the Vagrant file data using VirtualBox
-	
+`vagrant up --provider=virtualbox` - Build and run the VM base on the Vagrant file data using VirtualBox
+
+`vagrant up <stage/dev>` - creates and configures guest machines according to your Vagrantfile. 
+
+`vagrant destroy -f <stage/dev>` - stops the running machine Vagrant is managing and destroys all resources that were created during the machine creation process. 	
+
+`vagrant ssh <stage/dev>` - will SSH into a running Vagrant machine and give you access to a shell.
+
 How to install virtualenvwrapper on host
 ---------------------------------------
 Install pip3 if not already installed. For Debian based systems such as Debian, Ubuntu Or Linux mint, run the following
@@ -94,3 +93,18 @@ See the table structure:\
 
 See all the values in the table:\
 `SELECT * FROM table-name;`                  
+
+How to use isort
+---------------------------------------
+isort is a Python utility / library to sort imports alphabetically, and automatically separated into sections and by type.
+
+Install isort package:\
+`pip install isort` 
+
+Create your python file include imports:\
+`vim example.py`
+
+Run isort:\
+`isort example.py`
+
+Done! The imports inside your python file is sorted.
