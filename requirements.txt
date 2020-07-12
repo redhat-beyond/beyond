@@ -1,7 +1,2 @@
-botocore
 Flask==1.1.1
-pytest==5.4.1
 requests==2.23.0
-aws==0.2.5
-boto3==1.14.7
-python-dotenv==0.13.0
