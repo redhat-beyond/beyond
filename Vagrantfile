@@ -27,16 +27,38 @@ Vagrant.configure("2") do |config|
     stage.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
 
     stage.vm.provider :aws do |aws,override|
-      override.nfs.functional = false 
-      aws.keypair_name = ENV['KEY_NAME']
-      aws.ami = "ami-0701e7be9b2a77600"
-      aws.instance_type = "t2.micro"
-      aws.region = ENV['REGION']
-      aws.subnet_id = ENV['SUBNET_ID']
-      aws.security_groups = ENV['SECURITY_GROUPS']
+      override.nfs.functional = false
+      aws.aws_profile = ENV['PROFILE_STAGE']
+      aws.keypair_name = ENV['KEY_NAME_STAGE']
+      aws.ami = ENV['AMI_STAGE']
+      aws.instance_type = ENV['INSTANCE_TYPE_STAGE']
+      aws.region = ENV['REGION_STAGE']
+      aws.subnet_id = ENV['SUBNET_ID_STAGE']
+      aws.security_groups = ENV['SECURITY_GROUPS_STAGE']
       aws.associate_public_ip = true
-      override.ssh.username = "ubuntu"
-      override.ssh.private_key_path = ENV['PRIVATE_KEY_PATH']
+      override.ssh.username = ENV['USERNAME_STAGE']
+      override.ssh.private_key_path = ENV['PRIVATE_KEY_PATH_STAGE']
+    end
+
+  end
+
+  config.vm.define "prod" do |prod|
+
+    prod.vm.box = "dummy"
+    prod.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
+
+    prod.vm.provider :aws do |aws,override|
+      override.nfs.functional = false
+      aws.aws_profile = ENV['PROFILE_PROD']
+      aws.keypair_name = ENV['KEY_NAME_PROD']
+      aws.ami = ENV['AMI_PROD']
+      aws.instance_type = ENV['INSTANCE_TYPE_PROD']
+      aws.region = ENV['REGION_PROD']
+      aws.subnet_id = ENV['SUBNET_ID_PROD']
+      aws.security_groups = ENV['SECURITY_GROUPS_PROD']
+      aws.associate_public_ip = true
+      override.ssh.username = ENV['USERNAME_PROD']
+      override.ssh.private_key_path = ENV['PRIVATE_KEY_PATH_PROD']
     end
 
   end
