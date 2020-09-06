@@ -22,17 +22,18 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --max-complexity=10 --max-line-length=127 --statistics
-      - name: Execute bootstrap.sh
-        run: |
-          sudo ./bootstrap.sh
 
-      - name: Install Dependencies
-        run: |
-          wget https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz
-          mkdir geckodriver
-          tar -xzf geckodriver-v0.26.0-linux64.tar.gz -C geckodriver
-          pip install -r tests/requirements-test.txt
+    - name: Execute bootstrap.sh
+      run: |
+        sudo ./bootstrap.sh
 
-      - name: Execute tests
-        run: |
-          pytest
+    - name: Install Dependencies
+      run: |
+        wget https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz
+        mkdir geckodriver
+        tar -xzf geckodriver-v0.26.0-linux64.tar.gz -C geckodriver
+        pip install -r tests/requirements-test.txt
+
+    - name: Execute tests
+      run: |
+        pytest
