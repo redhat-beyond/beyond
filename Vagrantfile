@@ -9,6 +9,9 @@ class Hash
   end unless Hash.method_defined?(:except)
 end
 
+# Specify minimum Vagrant version
+Vagrant.require_version '= 2.2.10'
+
 Vagrant.configure("2") do |config|
   config.vagrant.plugins= ["vagrant-env"]
   config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: [ "venv/", ".git/", ".idea/" ]
