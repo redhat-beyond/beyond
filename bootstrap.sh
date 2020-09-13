@@ -10,8 +10,8 @@ apt-get install -y python3-pip python3-setuptools mysql-server mysql-client
 # create database
 systemctl start mysql
 mysql -u root -proot <<MYSQL_SCRIPT
-CREATE DATABASE baboon;
-USE baboon;
+CREATE DATABASE beyond;
+USE beyond;
 create table users(username VARCHAR(25) NOT NULL, password VARCHAR(100) NOT NULL, creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, PRIMARY KEY(username));
 MYSQL_SCRIPT
 

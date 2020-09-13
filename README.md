@@ -1,4 +1,4 @@
-# baboon
+# beyond 
 
 In this repository we learn the functions of git and GitHub
 
@@ -13,7 +13,7 @@ Some Useful git Commands
 --------------------
 `git remote -v` - Show all the tracked repositories
 
-`git remote add upstream git@github.com:beyond-io/baboon.git` - Adding upstream repo code
+`git remote add upstream git@github.com:beyond-io/beyond.git` - Adding upstream repo code
 
 `git commit -a` - Record changes to the repository
 
@@ -83,7 +83,7 @@ open mysql with the password root:\
 `mysql -uroot -p`
 
 Use our database:\
-`USE baboon;`
+`USE beyond ;`
 
 See which tables exist in the db:\
 `SHOW TABLES;`
