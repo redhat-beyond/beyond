@@ -3,4 +3,4 @@
 
 def test_title(selenium):
     selenium.get('http://localhost:5000')
-    assert selenium.title == 'Baboon'
+    assert selenium.title == 'Beyond'
