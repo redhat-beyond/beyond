@@ -2,5 +2,5 @@
 
 
 def test_title(selenium):
-    selenium.get('http://localhost:5000')
+    selenium.get('http://localhost:80')
     assert selenium.title == 'Beyond'

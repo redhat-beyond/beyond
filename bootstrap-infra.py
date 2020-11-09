@@ -16,8 +16,8 @@ def main():
     group_permissions = [
         {
             'IpProtocol': 'tcp',
-            'FromPort': 5000,
-            'ToPort': 5000,
+            'FromPort': 80,
+            'ToPort': 80,
             'IpRanges': [
                 {
                     'CidrIp': '0.0.0.0/0'

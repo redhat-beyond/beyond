@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "dev" do |dev|
     dev.vm.box = "bento/ubuntu-18.04"
-    dev.vm.network "forwarded_port", guest: 5000, host: 5000
+    dev.vm.network "forwarded_port", guest: 80, host: 80
   end
 
   config.vm.define "stage" do |stage|

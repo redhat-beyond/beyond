@@ -4,7 +4,7 @@ import requests
 
 
 def test_webserver_response_code():
-    response = requests.get("http://localhost:5000")
+    response = requests.get("http://localhost:80")
     assert response.status_code == 200
 
 
