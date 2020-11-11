@@ -59,7 +59,7 @@ Vagrant.configure("2") do |config|
       aws.region = ENV['REGION_PROD']
       aws.subnet_id = ENV['SUBNET_ID_PROD']
       aws.security_groups = ENV['SECURITY_GROUPS_PROD']
-      aws.associate_public_ip = true
+      aws.elastic_ip = ENV['ELASTIC_IP']
       override.ssh.username = ENV['USERNAME_PROD']
       override.ssh.private_key_path = ENV['PRIVATE_KEY_PATH_PROD']
     end
