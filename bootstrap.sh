@@ -24,3 +24,9 @@ fi
 pip3 install -r $my_path/requirements.txt
 nohup python3 $my_path/app.py runserver &
 sleep 1
+
+### Docker section ##
+cd $my_path
+chmod +x docker_install.sh && sh docker_install.sh
+docker build -t beyond/ubuntu .
+docker run -dit beyond/ubuntu

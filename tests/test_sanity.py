@@ -12,3 +12,9 @@ def test_mysql_server_is_running():
     stream = os.popen("mysqladmin status -u root -proot")
     output = stream.read().lower()
     assert ('uptime' in output)
+
+
+def test_docker_container_is_running():
+    stream = os.popen("docker ps | grep beyond/ubuntu")
+    output = stream.read().lower()
+    assert output, "Docker container isnt running"
