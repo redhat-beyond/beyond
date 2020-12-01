@@ -6,7 +6,7 @@ apt-get update -y
 debconf-set-selections <<<'mysql-server mysql-server/root_password password root'
 debconf-set-selections <<<'mysql-server mysql-server/root_password_again password root'
 # Installing packages
-apt-get install -y python3-pip python3-setuptools mysql-server mysql-client
+apt-get install -y python3-pip python3-setuptools mysql-server mysql-client libsystemd-dev
 # create database
 systemctl start mysql
 mysql -u root -proot <<MYSQL_SCRIPT
