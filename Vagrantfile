@@ -15,6 +15,7 @@ Vagrant.require_version '= 2.2.10'
 Vagrant.configure("2") do |config|
   config.vagrant.plugins= ["vagrant-env"]
   config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: [ "venv/", ".git/", ".idea/" ]
+  config.vm.provision :docker
   config.env.enable
 
   config.vm.provision "shell", path: "bootstrap.sh"
