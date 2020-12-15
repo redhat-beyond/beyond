@@ -1,4 +1,4 @@
-name: Web-Access
+name: prod-health
 
 on:
   #runs twice a day
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - name: Check http status code of production web-site
         uses: lakuapik/gh-actions-http-status@v1
