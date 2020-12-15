@@ -1,0 +1,17 @@
+name: Web-Access
+
+on:
+  #runs twice a day
+  schedule:
+    - cron:  '0 */12 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check http status code of production web-site
+        uses: lakuapik/gh-actions-http-status@v1
+        with:
+          sites: '["http://www.beyond-io.me.uk:5000"]'
+          expected: '[200]'
