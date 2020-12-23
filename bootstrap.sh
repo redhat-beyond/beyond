@@ -22,5 +22,5 @@ else
 fi
 
 pip3 install -r $my_path/requirements.txt
-nohup python3 $my_path/app.py runserver &
+nohup python3 $my_path/app.py runserver > $my_path/web-application.log 2>&1 &
 sleep 1
