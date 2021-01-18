@@ -1,0 +1,6 @@
+version: '3.9'
+services:
+  beyond:
+    build: .
+    tty: true
+    container_name: beyond
