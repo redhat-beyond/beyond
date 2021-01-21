@@ -34,6 +34,9 @@ jobs:
         tar -xzf geckodriver-v0.26.0-linux64.tar.gz -C geckodriver
         pip install -r tests/requirements-test.txt
 
+    - name: Build the docker-compose stack
+      run: docker-compose up -d
+
     - name: Execute tests
       run: |
         pytest
