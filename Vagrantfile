@@ -16,14 +16,14 @@ Vagrant.configure("2") do |config|
   config.vagrant.plugins= ["vagrant-env", "vagrant-docker-compose"]
   config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: [ "venv/", ".git/", ".idea/" ]
   config.vm.provision :docker
-  config.vm.provision :docker_compose, yml: "/vagrant/docker-compose.yml", rebuild: true, run: "always"
+  config.vm.provision :docker_compose, yml: "/vagrant/docker-compose.yml", rebuild: true, run: "always",
+   compose_version: "1.28.2"
   config.env.enable
-
-  config.vm.provision "shell", path: "bootstrap.sh"
 
   config.vm.define "dev" do |dev|
     dev.vm.box = "bento/ubuntu-18.04"
     dev.vm.network "forwarded_port", guest: 5000, host: 5000
+    dev.vm.provision "file", source: "./ssh-keys", destination: "/home/vagrant/.ssh/authorized_keys"
   end
 
   config.vm.define "stage" do |stage|
