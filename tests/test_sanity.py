@@ -2,7 +2,7 @@ import docker
 import requests
 from pystemd.systemd1 import Unit
 
-WEB_APP_CONTAINER_NAME = 'beyond'
+CONTAINER_NAMES = ['beyond', 'mariadb']
 
 
 def test_webserver_response_code():
@@ -18,10 +18,11 @@ def test_docker_deamon_is_running():
 
 def test_docker_container_is_running():
     """
-    Check that a given container name is running.
+    Check that a given container names are running.
     client.containers.list() is similar to 'docker ps'. it returns only running containers by default.
     """
     client = docker.from_env()
-    assert WEB_APP_CONTAINER_NAME in [con.name for con in client.containers.list()], (
-        f"Container {WEB_APP_CONTAINER_NAME} is not running."
+    running_containers = [con.name for con in client.containers.list()]
+    assert set(CONTAINER_NAMES).issubset(running_containers), (
+        f"Container/s {list(set(CONTAINER_NAMES).difference(running_containers))} is/are not running."
     )

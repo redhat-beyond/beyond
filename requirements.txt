@@ -1,2 +1,3 @@
 Flask==1.1.1
 requests==2.23.0
+mariadb==1.0.6

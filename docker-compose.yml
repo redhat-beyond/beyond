@@ -5,3 +5,16 @@ services:
     container_name: beyond
     ports:
       - "5000:5000"
+    links:
+      - mariadb
+
+  mariadb:
+    image: mariadb:10.5.9
+    container_name: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: beyond
+      MYSQL_DATABASE: beyond
+    expose:
+      - 3306
+    ports:
+      - 3306:3306
