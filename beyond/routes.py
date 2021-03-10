@@ -11,3 +11,8 @@ def index():
 @app.route('/contacts')
 def contacts():
     return render_template('/contacts.html')
+
+
+@app.route('/cycles')
+def cycles():
+    return render_template('/cycles.html')
