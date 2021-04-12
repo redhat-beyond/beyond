@@ -6,6 +6,9 @@ on:
 
 jobs:
   build:
+    env:
+      context: beyond
+      image_name: beyond
     runs-on: ubuntu-18.04
     steps:
     - name: Checkout source tree
@@ -35,8 +38,27 @@ jobs:
         tar -xzf geckodriver-v0.26.0-linux64.tar.gz -C geckodriver
         pip install -r tests/requirements-test.txt
 
-    - name: Build the docker-compose stack
-      run: docker-compose up -d
+#    - name: Build the docker-compose stack
+#      run: docker-compose up -d
+
+    - name: Check and verify version.json
+      id: check_version
+      run: |
+        echo -n ::set-output name=IMAGE_TAGS::
+        echo $(jq -r '.version' version.json)
+
+    - name: Build Beyond image
+      uses: docker/build-push-action@v1
+      with:
+        path: .
+        push: false
+        repository: ${{ env.image_name }}
+        tags: ${{ steps.check_version.outputs.IMAGE_TAGS }}
+
+    - name: Run Beyond image
+      run: |
+        echo "Running: docker run -d -p 5000:5000 --name ${image_name} ${image_name}:${{ steps.check_version.outputs.IMAGE_TAGS }}"
+        docker run -d -p 5000:5000 --name ${image_name} ${image_name}:${{ steps.check_version.outputs.IMAGE_TAGS }}
 
     - name: Execute tests
       run: |

@@ -1,0 +1,49 @@
+name: Publish
+
+on:
+  push:
+#  pull_request:
+#  pull_request_target:
+#    types: [review_requested, edited]
+    branches:
+      - master
+    tags:
+      - '*'
+    paths:
+      - version.json
+jobs:
+  build:
+    env:
+      context: beyond
+      image_name: beyond
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+      - name: Get image tags
+        id: image_tags
+        run: |
+          echo -n ::set-output name=IMAGE_TAGS::
+          VERSION=$(jq -r '.version' version.json)
+          TAGS=('latest')
+          if [ "${VERSION}" ] && [ "${VERSION}" != "latest" ]; then
+              TAGS+=("${VERSION}")
+          fi
+          if [[ "${GITHUB_REF}" =~ refs/tags/(.*) ]]; then
+              TAGS+=("git-${BASH_REMATCH[1]}")
+          fi
+          ( IFS=$','; echo "${TAGS[*]}" )
+
+      - name: Build and publish image to Quay
+        uses: docker/build-push-action@v1
+        with:
+          registry: quay.io
+          username: "redhat-beyond+robot"
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+          repository: redhat-beyond/beyond
+          tags: latest
+#          path: .
+#          registry: ${{ secrets.REGISTRY_URI }}
+#          repository: ${{ secrets.REGISTRY_REPOSITORY }}
+#          username: ${{ secrets.REGISTRY_USERNAME }}
+#          password: ${{ secrets.REGISTRY_PASSWORD }}
+#          tags: "${{ steps.image_tags.outputs.IMAGE_TAGS }}"
