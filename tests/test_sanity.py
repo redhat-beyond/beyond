@@ -2,7 +2,7 @@ import docker
 import requests
 from pystemd.systemd1 import Unit
 
-CONTAINER_NAMES = ['beyond']
+CONTAINER_NAMES = ['beyond', 'postgres']
 
 
 def test_webserver_response_code():
