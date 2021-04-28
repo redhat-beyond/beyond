@@ -6,12 +6,15 @@ on:
       - master
     tags:
       - '*'
+    #  The path to monitor for changes. Can be a single file or a wildcard
     paths:
       - version.json
 jobs:
   build:
     env:
-      context: beyond
+      registry: quay.io
+      reistry_username: redhat-beyond+robot
+      registry_repository: redhat-beyond
       image_name: beyond
     runs-on: ubuntu-18.04
     steps:
@@ -33,8 +36,8 @@ jobs:
       - name: Build and publish image to Quay
         uses: docker/build-push-action@v1
         with:
-          registry: quay.io
-          username: "redhat-beyond+robot"
+          registry: ${{ env.registry }}
+          username: ${{ env.registry_username }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-          repository: redhat-beyond/beyond
+          repository: ${{ env.registry_repository }}/${{ env.image_name }}
           tags: "${{ steps.image_tags.outputs.IMAGE_TAGS }}"

@@ -2,12 +2,12 @@ name: CI - Build and test
 
 on:
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
 
 jobs:
   build:
     env:
-      context: beyond
       image_name: beyond
     runs-on: ubuntu-18.04
     steps:
