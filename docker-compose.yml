@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   beyond:
-    build: .
+    image: quay.io/redhat-beyond/beyond
     container_name: beyond
     ports:
       - "5000:5000"
