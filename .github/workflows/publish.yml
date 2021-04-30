@@ -1,0 +1,43 @@
+name: CI - Publish to quay.io
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '*'
+    #  The path to monitor for changes. Can be a single file or a wildcard
+    paths:
+      - version.json
+jobs:
+  build:
+    env:
+      registry: quay.io
+      reistry_username: redhat-beyond+robot
+      registry_repository: redhat-beyond
+      image_name: beyond
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+      - name: Get image tags
+        id: image_tags
+        run: |
+          echo -n ::set-output name=IMAGE_TAGS::
+          VERSION=$(jq -r '.version' version.json)
+          TAGS=('latest')
+          if [ "${VERSION}" ] && [ "${VERSION}" != "latest" ]; then
+              TAGS+=("${VERSION}")
+          fi
+          if [[ "${GITHUB_REF}" =~ refs/tags/(.*) ]]; then
+              TAGS+=("git-${BASH_REMATCH[1]}")
+          fi
+          ( IFS=$','; echo "${TAGS[*]}" )
+
+      - name: Build and publish image to Quay
+        uses: docker/build-push-action@v1
+        with:
+          registry: ${{ env.registry }}
+          username: ${{ env.registry_username }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+          repository: ${{ env.registry_repository }}/${{ env.image_name }}
+          tags: "${{ steps.image_tags.outputs.IMAGE_TAGS }}"
